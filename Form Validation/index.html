@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML FORM VALIDATION</title>
+    <script>
+        function validationForm() {
+            let firstname = document.getElementById("firstname").value;
+            let lastname = document.getElementById("lastname").value;
+            let password = document.getElementById("password").value;
+            let email = document.getElementById("email").value;
+            let dob = document.getElementById("dob").value;
+            let phoneNo = document.getElementById("phoneNo").value;
+
+            let idError = document.getElementById("idError");
+            let nameError = document.getElementById("nameError");
+            let passwordError = document.getElementById("passwordError");
+            let emailError = document.getElementById("emailError");
+            let dobError = document.getElementById("dobError");
+            let phoneNoError = document.getElementById("phoneNoError");
+
+            // Clear previous messages
+            idError.innerText = "";
+            nameError.innerText = "";
+            passwordError.innerText = "";
+            emailError.innerText = "";
+            dobError.innerText = "";
+            phoneNoError.innerText = "";
+
+
+            let isValid = true;
+
+            // Validation patterns
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let phonePattern = /^\d{11}$/;
+
+            if (firstname === "") {
+                idError.innerText = "* First name is required";
+                isValid = false;
+            }
+            if (lastname === "") {
+                nameError.innerText = "* Last name is required";
+                isValid = false;
+            }
+            if (password.length < 6) {
+                passwordError.innerText = "* Minimum 6 characters required";
+                isValid = false;
+            }
+            if (!emailPattern.test(email)) {
+                emailError.innerText = "* Enter a valid email";
+                isValid = false;
+            }
+            if (dob === "") {
+                dobError.innerText = "* Select a valid date";
+                isValid = false;
+            }
+            if (!phonePattern.test(phoneNo)) {
+                phoneNoError.innerText = "* Phone number must be 11 digits";
+                isValid = false;
+            }
+            if (isValid) {
+                alert("Form submitted successfully!");
+            }
+
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <h1 align="center">HTML FORM</h1>
+    <form onsubmit="return validationForm()">
+        <fieldset>
+            <legend>signup</legend>
+            <tr>
+                <td>First Name :</td>
+                <td>
+                     <input type="text" name="value" id="firstname"/> 
+                     <span id="idError" style="color:rgb(60, 25, 177)"></span>
+                    </td><br> <br>
+            </tr>
+            <tr>
+                <td>Last Name :</td>
+                <td> 
+                    <input type="text" name="value" id="lastname"/>
+                     <span id="nameError" style="color:rgb(60, 25, 177)"></span>
+                 </td><br> <br>
+            </tr>
+            <tr> 
+                <td>Password :</td>
+                <td> <input type="password" name="value" id="password"/> 
+                     <span id="passwordError" style="color:rgb(60, 25, 177)"></span>
+                 </td><br> <br>
+            </tr>
+            <tr>
+                <td>Email :</td> 
+                <td> <input type="email" name="value" id="email" placeholder="example@gmail.com"/> 
+                     <span id="emailError" style="color:rgb(60, 25, 177)"></span>
+                 </td><br> <br>
+            </tr>
+            <tr>
+                <td>DOB :</td>
+                <td><input type="date" name="value " id="dob"/>
+                 <span id="dobError" style="color:rgb(60, 25, 177)"></span>
+                </td> <br> <br>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="male" id="male" /> Male
+                    <input type="radio" name="gender" value="female" id="female"/> Female
+                    <input type="radio" name="gender" value="other" id="other"/> Other
+                </td> <br>
+            </tr> <br>
+            <tr>
+                <td>Country:</td>
+                <td>
+                    <select name="country">
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="usa">USA</option>
+                        <option value="uk">UK</option>
+                    </select>
+                </td> <br>
+            </tr> <br>
+            <tr>
+                <td>Phone :</td>
+                <td><input type="tel" name="phone" id="phoneNo" placeholder="01XXXXXXXXX"/>
+                 <span id="phoneNoError" style="color:rgb(60, 25, 177)"></span>
+                </td> <br>
+            </tr>
+
+            <tr>
+                <td>Language:</td>
+                <td>
+                    <input type="checkbox" name="value"/> English
+                    <input type="checkbox" name="value"/> Bangla
+                </td> <br>
+            </tr> <br>
+            <tr> 
+                <td align="right">Write Your Comments :</td>
+                <td><textarea></textarea></td><br>
+            </tr> <br>
+            <tr>
+
+                <tr>
+                    <td> <b>Background color :</b></td>
+                    <td><input type="color" name="bgcolor" value="#68c2f8"/></td> <br>
+                </tr> <br>
+                <td> 
+                   <input type="button" name="" value="Click"/>
+                   <input type="submit" name="" value="Submit"/>
+                   <input type="reset" name="" value="Reset"/>
+                </td>
+                
+            </tr>
+        </fieldset>
+
+</body>
+</html>
